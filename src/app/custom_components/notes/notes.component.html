@@ -1,1 +1,3 @@
-<p>notes works!</p>
+<div class="border border-secondary rounded m-2 text-center" *ngFor="let note of notesArr">
+    <app-specific-note [note]='note'></app-specific-note>
+</div>

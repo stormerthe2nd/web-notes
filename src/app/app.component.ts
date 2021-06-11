@@ -7,10 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     name = 'web-notes';
-    func = () => {
-        this.name = 'junaid'
-    }
-    constructor() {
-        setTimeout(this.func, 2000);
-    }
+
 }
