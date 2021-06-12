@@ -1,3 +1,3 @@
-<div class="border border-secondary rounded m-2 text-center" *ngFor="let note of notesArr">
-    <app-specific-note [note]='note'></app-specific-note>
+<div class="border border-light rounded m-2 text-center" *ngFor="let note of notesArr">
+    <app-specific-note [note]='note' (deleteNoteEmitter)="listenDeleteEmitter($event)"></app-specific-note>
 </div>

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { notes } from 'src/app/notes';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Notes } from 'src/app/notes';
 
 @Component({
     selector: 'app-specific-note',
@@ -8,10 +8,15 @@ import { notes } from 'src/app/notes';
 })
 export class SpecificNoteComponent implements OnInit {
 
-    @Input() note: notes;
+    @Input() note: Notes;
     constructor() { }
+    @Output() deleteNoteEmitter: EventEmitter<Notes> = new EventEmitter();
 
     ngOnInit(): void {
+
     }
 
+    deleteThisNote(note: Notes) {
+        this.deleteNoteEmitter.emit(note)
+    }
 }

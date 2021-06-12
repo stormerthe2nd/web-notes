@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { notes } from "../../notes"
+import { Notes } from "../../notes"
 
 @Component({
     selector: 'app-notes',
@@ -8,7 +8,7 @@ import { notes } from "../../notes"
 })
 export class NotesComponent implements OnInit {
 
-    notesArr: notes[]
+    notesArr: Notes[]
     constructor() {
         this.notesArr = [
             {
@@ -28,11 +28,34 @@ export class NotesComponent implements OnInit {
                 title: "Notes 3",
                 text: "this is the text in my book",
                 active: true
+            },
+            {
+                sno: 4,
+                title: "Notes 4",
+                text: "this is the text in my book",
+                active: true
+            },
+            {
+                sno: 5,
+                title: "Notes 5",
+                text: "this is the text in my book",
+                active: true
+            },
+            {
+                sno: 6,
+                title: "Notes 6",
+                text: "this is the text in my book",
+                active: true
             }
         ]
     }
 
     ngOnInit(): void {
+    }
+
+    listenDeleteEmitter(note: Notes) {
+        var noteIndex = this.notesArr.indexOf(note)
+        this.notesArr.splice(noteIndex, 1)
     }
 
 }
