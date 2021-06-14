@@ -57,5 +57,7 @@ export class NotesComponent implements OnInit {
         var noteIndex = this.notesArr.indexOf(note)
         this.notesArr.splice(noteIndex, 1)
     }
-
+    listenCreateEmitter(note: Notes) {
+        this.notesArr.push(note)
+    }
 }

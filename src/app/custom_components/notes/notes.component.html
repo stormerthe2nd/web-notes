@@ -1,3 +1,19 @@
+<div class="accordion accordion-flush m-2 border rounded" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                New Notebook
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <app-add-note (createNoteEmitter)="listenCreateEmitter($event)"></app-add-note>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="border border-light rounded m-2 text-center" *ngFor="let note of notesArr">
     <app-specific-note [note]='note' (deleteNoteEmitter)="listenDeleteEmitter($event)"></app-specific-note>
 </div>

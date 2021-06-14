@@ -1,0 +1,13 @@
+<form (ngSubmit)="createNote()">
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Name</label>
+        <input class="form-control form-control-sm" name="title" [(ngModel)]="title" type="text" placeholder=""
+            aria-label=".form-control-sm example">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+        <textarea class="form-control" name="text" [(ngModel)]="text" id="exampleFormControlTextarea1"
+            rows="3"></textarea>
+    </div>
+    <input class="btn btn-success btn-sm" type="submit" value="Create">
+</form>
