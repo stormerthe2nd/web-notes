@@ -1,19 +1,36 @@
-<div class="accordion accordion-flush m-2 border rounded" id="accordionFlushExample">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                New Notebook
-            </button>
-        </h2>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-            data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-                <app-add-note (createNoteEmitter)="listenCreateEmitter($event)"></app-add-note>
-            </div>
+<div class="m-2 text-center">
+    <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            New Notebook
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <app-add-note (createNoteEmitter)="listenCreateEmitter($event)"></app-add-note>
         </div>
     </div>
 </div>
-<div class="border border-light rounded m-2 text-center" *ngFor="let note of notesArr">
-    <app-specific-note [note]='note' (deleteNoteEmitter)="listenDeleteEmitter($event)"></app-specific-note>
+
+
+
+<div *ngIf="notesArr.length <1; else elseBlock" class="text-center">
+    <p class="fs-3">no Notes to display</p>
 </div>
+<ng-template #elseBlock>
+    <div *ngFor="let note of notesArr">
+        <div *ngIf="note.active; else elseBlock">
+            <app-specific-note [note]='note' (deleteNoteEmitter)="listenDeleteEmitter($event)">
+            </app-specific-note>
+        </div>
+        <ng-template #elseBlock>
+            <app-specific-note style="display: none;" [note]='note' (deleteNoteEmitter)="listenDeleteEmitter($event)">
+            </app-specific-note>
+        </ng-template>
+    </div>
+
+    <div>
+        <button class="btn btn-secondary btn-sm" (click)="previous()">previous</button>
+        <button class="btn btn-secondary btn-sm" (click)="next()">next</button>
+    </div>
+</ng-template>

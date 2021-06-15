@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -34,14 +34,19 @@
     </nav>
 
 </header>
-<div class="container-fluid">
-    <div>
-        <h1>Welcome to {{name}}</h1>
-
-        <p>A simple website that allows you to write and store notes on the internet, making it accessible anywhere
-            around the world on any device with a potential browser</p>
+<div class="container">
+    <div class="card mt-3 mb-3">
+        <img src="https://source.unsplash.com/1300x400/?notes" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title fw-bold">Welcome to {{name}}</h5>
+            <p class="card-text Light weight text">A simple web app that allows you to write and store notes on the
+                internet, making
+                it accessible anywhere
+                around the world on any device with a potential browser</p>
+            <p class="card-text"><small class="text-muted">Created with Angular</small></p>
+        </div>
     </div>
-    <div class="container border border-dark rounded bg-secondary">
+    <div class="container border border-dark rounded bg-secondary mb-5">
         <app-notes></app-notes>
     </div>
 </div>

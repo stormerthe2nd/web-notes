@@ -1,11 +1,13 @@
-<div class="card w-100">
-    <div class="card-header">
-        <h5 class="card-title">{{note.title}}</h5>
-    </div>
-    <div class="card-body">
-        <p class="card-text">{{note.text}}</p>
-    </div>
-    <div class="card-footer">
-        <button class="btn btn-danger btn-sm" (click)="deleteThisNote(note)">Delete</button>
+<div class="border border-light rounded m-2 mb-3 text-center">
+    <div class="card w-100">
+        <div class="card-header">
+            <h5 class="card-title">{{note.title}}</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{note.text}}</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-danger btn-sm" (click)="deleteThisNote(note)">Delete</button>
+        </div>
     </div>
 </div>

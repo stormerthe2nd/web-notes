@@ -21,7 +21,7 @@ export class AddNoteComponent implements OnInit {
             sno: Math.random(),
             title: this.title,
             text: this.text,
-            active: true
+            active: false
         }
         this.createNoteEmitter.emit(newNote)
     }
