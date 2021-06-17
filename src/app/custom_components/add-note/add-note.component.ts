@@ -2,31 +2,31 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Notes } from 'src/app/notes';
 
 @Component({
-    selector: 'app-add-note',
-    templateUrl: './add-note.component.html',
-    styleUrls: ['./add-note.component.css']
+  selector: 'app-add-note',
+  templateUrl: './add-note.component.html',
+  styleUrls: ['./add-note.component.css']
 })
 export class AddNoteComponent implements OnInit {
 
-    title: string
-    text: string
-    @Output() createNoteEmitter: EventEmitter<Notes> = new EventEmitter()
-    constructor() { }
+  title: string
+  text: string
+  @Output() createNoteEmitter: EventEmitter<Notes> = new EventEmitter()
+  constructor() { }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
-    createNote(): void {
-        const newNote: Notes = {
-            sno: Math.random(),
-            title: this.title,
-            text: this.text,
-            active: false
-        }
-        this.createNoteEmitter.emit(newNote)
+  createNote(): void {
+    const newNote: Notes = {
+      sno: Math.random(),
+      title: this.title,
+      text: this.text,
+      active: false
     }
+    this.createNoteEmitter.emit(newNote)
+  }
 }
 function output() {
-    throw new Error('Function not implemented.');
+  throw new Error('Function not implemented.');
 }
 

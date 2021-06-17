@@ -1,6 +1,7 @@
 export class Notes {
-    sno: number
-    title: string
-    text: string
-    active: boolean
+  sno: number
+  title: string
+  text: string
+  active: boolean
+  stared?: boolean
 }

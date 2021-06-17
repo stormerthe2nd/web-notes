@@ -1,47 +1,46 @@
 <div>
-    <div class="mt-3 row">
-        <div class="col d-flex justify-content-center">
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">
-                New Notebook
-            </button>
-        </div>
-        <div class="collapse " id="collapseExample">
-            <div class="card card-body m-4">
-                <app-add-note (createNoteEmitter)="listenCreateEmitter($event)"></app-add-note>
-            </div>
-        </div>
+  <div class="mt-3 row">
+    <div class="col d-flex justify-content-center">
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        New Notebook
+      </button>
     </div>
+    <div class="collapse " id="collapseExample">
+      <div class="card card-body m-4">
+        <app-add-note (createNoteEmitter)="listenCreateEmitter($event)"></app-add-note>
+      </div>
+    </div>
+  </div>
 
-    <div class="position-relative p-3">
-        <div *ngIf="notesArr.length <1; else elseBlock" class="text-center">
-            <p class="fs-3">No Notes to Display</p>
+  <div class="position-relative p-3">
+    <div *ngIf="notesArr.length <1; else elseBlock" class="text-center">
+      <p class="fs-3">No Notes to Display</p>
+    </div>
+    <ng-template #elseBlock>
+      <div *ngFor="let note of notesArr">
+        <div *ngIf="note.active; else elseBlock">
+          <app-specific-note [note]='note' (swipeleft)="next()" (swiperight)="previous()"
+            (deleteNoteEmitter)="listenDeleteEmitter($event)" (starNoteEmitter)="listenStarEmitter($event)">
+          </app-specific-note>
         </div>
         <ng-template #elseBlock>
-            <div *ngFor="let note of notesArr">
-                <div *ngIf="note.active; else elseBlock">
-                    <app-specific-note [note]='note' (swipeleft)="next()" (swiperight)="previous()"
-                        (deleteNoteEmitter)="listenDeleteEmitter($event)">
-                    </app-specific-note>
-                </div>
-                <ng-template #elseBlock>
-                    <app-specific-note style="display: none;" [note]='note'
-                        (deleteNoteEmitter)="listenDeleteEmitter($event)">
-                    </app-specific-note>
-                </ng-template>
-            </div>
-
-            <div class="m-5">
-                <button class="btn btn-secondary position-absolute bottom-0 start-0" style="outline: none;
-        box-shadow: none;" (click)="previous()"><span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span></button>
-                <button class="btn btn-secondary position-absolute bottom-0 end-0" style="outline: none;
-        box-shadow: none;" (click)="next()"><span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span></button>
-                <p class="position-absolute bottom-0 start-50 translate-middle-x fw-normal text-light">
-                    {{activeNote+1+" of "+notesArr.length}}
-                </p>
-            </div>
+          <app-specific-note style="display: none;" [note]='note' (deleteNoteEmitter)="listenDeleteEmitter($event)">
+          </app-specific-note>
         </ng-template>
-    </div>
+      </div>
+
+      <div class="m-5">
+        <button class="btn btn-secondary position-absolute bottom-0 start-0" style="outline: none;
+        box-shadow: none;" (click)="previous()"><span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span></button>
+        <button class="btn btn-secondary position-absolute bottom-0 end-0" style="outline: none;
+        box-shadow: none;" (click)="next()"><span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span></button>
+        <p class="position-absolute bottom-0 start-50 translate-middle-x fw-normal text-light">
+          {{activeNote+1+" of "+notesArr.length}}
+        </p>
+      </div>
+    </ng-template>
+  </div>
 </div>

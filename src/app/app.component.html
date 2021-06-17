@@ -1,53 +1,52 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown link
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-uppercase" href="#">{{name}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Filter Notes
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <div class="container">
-    <div class="card mt-3 mb-3">
-        <img src="https://source.unsplash.com/1300x400/?notes" class="card-img-top" alt="">
-        <div class="card-body">
-            <h5 class="card-title fw-bold">Welcome to {{name}}</h5>
-            <p class="card-text Light weight text">A simple web app that allows you to write and store notes on the
-                internet, making
-                it accessible anywhere
-                around the world on any device with a potential browser</p>
-            <p class="card-text"><small class="text-muted">Created with Angular</small></p>
-        </div>
+  <div class="card mt-3 mb-3">
+    <img src="https://source.unsplash.com/1300x400/?notes" class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title fw-bold">Welcome to {{name}}</h5>
+      <p class="card-text Light weight text">A simple web app that allows you to write and store notes on the
+        internet, making
+        it accessible anywhere
+        around the world on any device with a potential browser</p>
+      <p class="card-text"><small class="text-muted">Created with Angular</small></p>
     </div>
-    <div class="container border border-dark rounded bg-secondary mb-5">
-        <app-notes></app-notes>
-    </div>
+  </div>
+  <div class="container border border-dark rounded bg-secondary mb-5">
+    <app-notes></app-notes>
+  </div>
 </div>

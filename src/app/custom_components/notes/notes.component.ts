@@ -3,85 +3,65 @@ import { Notes } from "../../notes"
 declare var $: any
 
 @Component({
-    selector: 'app-notes',
-    templateUrl: './notes.component.html',
-    styleUrls: ['./notes.component.css']
+  selector: 'app-notes',
+  templateUrl: './notes.component.html',
+  styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
-    notesArr: Notes[]
-    noteElArr: Array<any> = []
-    activeNote: number = 0
-    constructor() {
-        this.notesArr = [
-            {
-                sno: 1,
-                title: "Notes 1",
-                text: "this is the text in my book 2",
-                active: false
-            },
-            {
-                sno: 2,
-                title: "Notes 2",
-                text: "this is the text in my book 5",
-                active: false
-            },
-            {
-                sno: 3,
-                title: "Notes 3",
-                text: "this is the text in my book 29",
-                active: false
-            },
-            {
-                sno: 4,
-                title: "Notes 4",
-                text: "this is the text in my book 234",
-                active: false
-            },
-            {
-                sno: 5,
-                title: "Notes 5",
-                text: "this is the text in my book 5435",
-                active: false
-            },
-            {
-                sno: 6,
-                title: "Notes 6",
-                text: "this is the text in my book 23092",
-                active: false
-            }
-        ]
-        this.notesArr[0].active = true
-    }
+  notesArr: Notes[]
+  noteElArr: Array<any> = []
+  activeNote: number = 0
+  localNotes
+  constructor() {
+    this.localNotes = localStorage.getItem("notes")
+    this.localNotes ? this.notesArr = JSON.parse(this.localNotes) : this.notesArr = []
+    this.notesArr[0] ? function (notesArr: Notes[]) {
+      notesArr.forEach(el => {
+        el.sno = notesArr.indexOf(el)
+        el.active = false
+      })
+      notesArr[0].active = true
+      console.log(...notesArr)
+    }(this.notesArr) : {}
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
-    listenDeleteEmitter(note: Notes) {
-        var noteIndex = this.notesArr.indexOf(note)
-        this.notesArr.splice(noteIndex, 1)
-        this.activeNote--
-        this.notesArr.length < 1 ? {} : this.next()
-    }
-    listenCreateEmitter(note: Notes) {
-        this.notesArr.push(note)
-        this.activeNote = this.notesArr.length
-        this.previous()
-    }
+  listenDeleteEmitter(note: Notes) {
+    var noteIndex = this.notesArr.indexOf(note)
+    this.notesArr.splice(noteIndex, 1)
+    localStorage.setItem("notes", JSON.stringify(this.notesArr))
+    this.activeNote--
+    this.notesArr.length < 1 ? {} : this.next()
+  }
+  listenCreateEmitter(note: Notes) {
 
-    previous() {
-        if (this.activeNote != 0) this.activeNote--
-        this.notesArr.forEach(el => el.active = false)
-        this.notesArr[this.activeNote].active = true
-    }
-    next() {
-        if (this.activeNote != this.notesArr.length - 1) this.activeNote++
-        this.notesArr.forEach(el => el.active = false)
-        this.notesArr[this.activeNote].active = true
-    }
+    this.notesArr.push(note)
+    this.activeNote = this.notesArr.length
+    localStorage.setItem("notes", JSON.stringify(this.notesArr))
+    this.previous()
+  }
 
-    swiper() {
-        $("app-specific-note").on("swipe", function () {
-            this.next()
-        })
-    }
+  listenStarEmitter(note: Notes) {
+    this.notesArr[this.notesArr.indexOf(note)].stared = note.stared
+    localStorage.setItem("notes", JSON.stringify(this.notesArr))
+  }
+
+  previous() {
+    if (this.activeNote != 0) this.activeNote--
+    this.notesArr.forEach(el => el.active = false)
+    this.notesArr[this.activeNote].active = true
+  }
+  next() {
+    if (this.activeNote != this.notesArr.length - 1) this.activeNote++
+    this.notesArr.forEach(el => el.active = false)
+    this.notesArr[this.activeNote].active = true
+  }
+
+  swiper() {
+    $("app-specific-note").on("swipe", function () {
+      this.next()
+    })
+  }
 }
