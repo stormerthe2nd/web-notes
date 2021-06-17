@@ -8,7 +8,6 @@ declare var $: any
     styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
-
     notesArr: Notes[]
     noteElArr: Array<any> = []
     activeNote: number = 0
@@ -55,7 +54,6 @@ export class NotesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
     }
 
     listenDeleteEmitter(note: Notes) {
@@ -66,6 +64,8 @@ export class NotesComponent implements OnInit {
     }
     listenCreateEmitter(note: Notes) {
         this.notesArr.push(note)
+        this.activeNote = this.notesArr.length
+        this.previous()
     }
 
     previous() {
@@ -77,5 +77,11 @@ export class NotesComponent implements OnInit {
         if (this.activeNote != this.notesArr.length - 1) this.activeNote++
         this.notesArr.forEach(el => el.active = false)
         this.notesArr[this.activeNote].active = true
+    }
+
+    swiper() {
+        $("app-specific-note").on("swipe", function () {
+            this.next()
+        })
     }
 }
