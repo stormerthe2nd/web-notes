@@ -14,6 +14,7 @@ import {
     HammerModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG
 }
     from '@angular/platform-browser';
+import { AboutComponent } from './custom_components/about/about.component';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -27,7 +28,8 @@ export class MyHammerConfig extends HammerGestureConfig {
         AppComponent,
         NotesComponent,
         SpecificNoteComponent,
-        AddNoteComponent
+        AddNoteComponent,
+        AboutComponent
     ],
     imports: [
         BrowserModule,

@@ -4,7 +4,7 @@
       <h5 class="card-title">{{note.title}}</h5>
     </div>
     <div class="card-body">
-      <p class="card-text">{{note.text.slice(0,500)+"..."}}</p>
+      <p class="card-text">{{note.text[500]?note.text.slice(0,500)+"...":note.text}}</p>
     </div>
     <div class="card-footer container">
       <div class="row">
